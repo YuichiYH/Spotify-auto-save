@@ -163,3 +163,5 @@ cython_debug/
 json_create.py
 token.json
 .cache*
+date.py
+date.json

@@ -2,12 +2,31 @@ import spotipy
 import json
 import sys
 import os
+import datetime
 from spotipy.oauth2 import SpotifyOAuth
 import spotipy.util as util
 
-def linkID(link: str) -> str:
-    ID = link.split('/')[-1].split('?')[0]
-    return ID
+if os.path.isfile('date.json'):
+
+    with open('date.json', 'r') as dateFile:
+        storageDate = json.load(dateFile)
+
+        last_update = datetime.datetime.strptime(storageDate['date'], '%Y-%m-%d')
+        today = datetime.datetime.today()
+        if (last_update + datetime.timedelta(days = 7)) >= today:
+            print('already added this playlist')
+            sys.exit()
+
+        else:
+            x = {
+                'year':today.strftime('%Y'),
+                'month':today.strftime('%m'),
+                'day':today.strftime('%d'),
+                'date':str(datetime.date.today())
+            }
+    with open('date.json', 'w') as dateFile:
+        json.dump(x, dateFile)
+            
 
 
 with open('token.json', 'r') as jsonFile:
@@ -25,20 +44,24 @@ except:
 
 sp = spotipy.Spotify(auth=token)
 
-targetPlaylist = sys.argv[2]
-weeklyPlaylist = sys.argv[3]
+def linkID(link: str) -> str:
+    ID = link.split('/')[-1].split('?')[0]
+    return ID
+
+def get_track_ids(playlist_ID: str) -> list:
+
+    playlist = sp.user_playlist(username, playlist_ID, fields="tracks")
+    tracks = playlist['tracks']
+
+    track_ids = []
+
+    for item in tracks['items']:
+        track = item['track']
+        track_ids.append(track['id'])
+
+    return track_ids
 
 
-# playlist = sp.user_playlist_tracks(username,"585bssFwz8FNsEaGFkKLrB",fields="tracks")
-playlist = sp.user_playlist(username, "37i9dQZEVXcEOnezVigr6u",fields="tracks,next")
-results = playlist['tracks']
+targetPlaylist_ID = linkID(sys.argv[2])
+weeklyPlaylist_ID = linkID(sys.argv[3])
 
-track_ids = []
-
-for i, item in enumerate(results['items']):
-    track = item['track']
-    track_ids.append(track['id'])
-
-print(track_ids)
-
-result = sp.playlist_add_items('4IUGAYFGwES21gNebDjClr',track_ids)
