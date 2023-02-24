@@ -5,6 +5,10 @@ import os
 from spotipy.oauth2 import SpotifyOAuth
 import spotipy.util as util
 
+def linkID(link: str) -> str:
+    ID = link.split('/')[-1].split('?')[0]
+    return ID
+
 
 with open('token.json', 'r') as jsonFile:
     tokens = json.load(jsonFile)
