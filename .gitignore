@@ -162,3 +162,4 @@ cython_debug/
 #.idea/
 json_create.py
 token.json
+.cache*
