@@ -11,3 +11,4 @@ The Python file uses 3 arguments,
  - Added the actual add music to playlist
  - automate the 3 arguments so no arguments need to be given, and they can be configurated
  - create a config file
+ - Change redirect URL to an readme or another url
