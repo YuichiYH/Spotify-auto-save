@@ -6,6 +6,9 @@ import datetime
 from spotipy.oauth2 import SpotifyOAuth
 import spotipy.util as util
 
+if not os.path.isdir('json'):
+    os.mkdir('json')
+
 if os.path.isfile('json/date.json'):
 
     with open('json/date.json', 'r') as dateFile:
