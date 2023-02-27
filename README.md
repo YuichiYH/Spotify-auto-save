@@ -12,5 +12,6 @@ The Python file uses 3 arguments,
 
 ## To Do
  - automate the 3 arguments so no arguments need to be given, and they can be configurated
+ - add a better way to config client id and secret
  - create a config file
  - Change redirect URL to an readme or another url
