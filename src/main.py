@@ -6,9 +6,9 @@ import datetime
 from spotipy.oauth2 import SpotifyOAuth
 import spotipy.util as util
 
-if os.path.isfile('date.json'):
+if os.path.isfile('json/date.json'):
 
-    with open('date.json', 'r') as dateFile:
+    with open('json/date.json', 'r') as dateFile:
         storageDate = json.load(dateFile)
 
         last_update = datetime.datetime.strptime(storageDate['date'], '%Y-%m-%d')
@@ -24,13 +24,16 @@ if os.path.isfile('date.json'):
                 'day':today.strftime('%d'),
                 'date':str(datetime.date.today())
             }
-    with open('date.json', 'w') as dateFile:
+    with open('json/date.json', 'w') as dateFile:
         json.dump(x, dateFile)
             
 
-
-with open('token.json', 'r') as jsonFile:
-    tokens = json.load(jsonFile)
+if os.path.isfile('json/token.json'):
+    with open('json/token.json', 'r') as jsonFile:
+        tokens = json.load(jsonFile)
+else:
+    print('Couldnt find the client tokens')
+    sys.exit()
 
 username = sys.argv[1] 
 
@@ -65,3 +68,18 @@ def get_track_ids(playlist_ID: str) -> list:
 targetPlaylist_ID = linkID(sys.argv[2])
 weeklyPlaylist_ID = linkID(sys.argv[3])
 
+# Gets all the playlist tracks
+# Note: Mind that Spotipy has a limit of 100 tracks selected
+# Must find a way to get over that limit
+playlist = sp.user_playlist(username, targetPlaylist_ID, fields="tracks")
+
+# select the tracks and creates a list to store it
+tracks = playlist['tracks']
+track_ids = []
+
+for item in tracks['items']:
+    track = item['track']
+    track_ids.append(track['id'])
+
+# Add the list of tracks to the target playlist
+result = sp.playlist_add_items(weeklyPlaylist_ID, track_ids)
