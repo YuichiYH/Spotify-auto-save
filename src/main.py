@@ -24,9 +24,9 @@ if os.path.isfile('json/date.json'):
                 'day':today.strftime('%d'),
                 'date':str(datetime.date.today())
             }
-    with open('json/date.json', 'w') as dateFile:
-        json.dump(x, dateFile)
-            
+
+with open('json/date.json', 'w') as dateFile:
+    json.dump(x, dateFile)
 
 if os.path.isfile('json/token.json'):
     with open('json/token.json', 'r') as jsonFile:
