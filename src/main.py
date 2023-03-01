@@ -51,10 +51,10 @@ scopes = ['playlist-read-private','playlist-read-collaborative','playlist-modify
 
 # Get the spotify auth
 try:
-    token = util.prompt_for_user_token(username=username, client_id=tokens["client_id"], client_secret=tokens["client_secret"],redirect_uri="http://google.com/",scope=scopes)
+    token = util.prompt_for_user_token(username=username, client_id=tokens["client_id"], client_secret=tokens["client_secret"],redirect_uri="https://github.com/YuichiYH/Spotify-auto-save/blob/main/redirect/README.md",scope=scopes)
 except:
     os.remove(f".cache={username}")
-    token = util.prompt_for_user_token(username=username, client_id=tokens["client_id"], client_secret=tokens["client_secret"],redirect_uri="http://google.com/",scope=scopes)
+    token = util.prompt_for_user_token(username=username, client_id=tokens["client_id"], client_secret=tokens["client_secret"],redirect_uri="https://github.com/YuichiYH/Spotify-auto-save/blob/main/redirect/README.md",scope=scopes)
 
 sp = spotipy.Spotify(auth=token)
 
