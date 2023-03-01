@@ -1,49 +1,18 @@
 import spotipy
-import json
 import sys
 import os
-import datetime
-from spotipy.oauth2 import SpotifyOAuth
 import spotipy.util as util
 
+import checks
+
 # check if there is a json dir
-if not os.path.isdir('json'):
-    os.mkdir('json')
+checks.checkJson()
 
-# Check if there is a date file
-if os.path.isfile('json/date.json'):
+# Check if there is a date file and update it
+checks.checkDate()
 
-    with open('json/date.json', 'r') as dateFile:
-        storageDate = json.load(dateFile)
-
-        #Check when was the last update in the date file
-        # true: The date file is isnside the week time period
-        last_update = datetime.datetime.strptime(storageDate['date'], '%Y-%m-%d')
-        today = datetime.datetime.today()
-        if (last_update + datetime.timedelta(days = 7)) >= today:
-            print('already added this playlist')
-            sys.exit()
-
-        # false: Creates a new data to update the date file
-        else:
-            x = {
-                'year':today.strftime('%Y'),
-                'month':today.strftime('%m'),
-                'day':today.strftime('%d'),
-                'date':str(datetime.date.today())
-            }
-
-# Update the date file
-with open('json/date.json', 'w') as dateFile:
-    json.dump(x, dateFile)
-
-# Check if the client tokens exists
-if os.path.isfile('json/token.json'):
-    with open('json/token.json', 'r') as jsonFile:
-        tokens = json.load(jsonFile)
-else:
-    print('Couldnt find the client tokens')
-    sys.exit()
+# Check if the client tokens exists and store's it
+tokens = checks.getToken()
 
 username = sys.argv[1] 
 
