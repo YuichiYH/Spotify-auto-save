@@ -15,4 +15,4 @@ The Python file uses 3 arguments,
 - [ ] add a better way to config client id and secret
 - [x] Create a config file
     - [ ] Make a confirmation for changing the playlist using search 
-- [ ] Change redirect URL to an readme or another url
+- [ ] Add week schelude for when the program will work instead of check the last date
