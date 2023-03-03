@@ -14,6 +14,5 @@ The Python file uses 3 arguments,
  - Automate the 3 arguments so no arguments need to be given, and they can be configurated
  - Add a better way to config client id and secret
  - Create a config file
- - Change redirect URL to an readme or another url
  - Organize files and folders
  - Add week schelude for when the program will work instead of check the last date
