@@ -3,7 +3,8 @@ import sys
 import os
 import spotipy.util as util
 
-import checks
+import mod.checks as checks
+from mod.config import config as config
 
 # check if there is a json dir
 checks.checkJson()
