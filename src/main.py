@@ -4,7 +4,7 @@ import os
 import spotipy.util as util
 
 import mod.checks as checks
-from mod.config import config as config
+import mod.config as config
 
 # check if there is a json dir
 checks.checkJson()
