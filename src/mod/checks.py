@@ -35,8 +35,8 @@ def checkDate():
                     'date':str(datetime.date.today())
                 }
 
-    with open('json/date.json', 'w') as dateFile:
-        json.dump(x, dateFile)
+                with open('json/date.json', 'w') as dateFile:
+                    json.dump(x, dateFile)
 
 def getToken():
     '''Check if the client ``tokens`` exists and returns if it exist'''
