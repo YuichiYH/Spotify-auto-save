@@ -14,5 +14,7 @@ The Python file uses 3 arguments,
 - [ ] automate the 3 arguments so no arguments need to be given, and they can be configurated
 - [ ] add a better way to config client id and secret
 - [x] Create a config file
-    - [ ] Make a confirmation for changing the playlist using search 
+    - [ ] Make a confirmation for changing the playlist using search
+    - [ ] Implement config file 
 - [ ] Add week schelude for when the program will work instead of check the last date
+- [ ] Check if JSON files are empty
