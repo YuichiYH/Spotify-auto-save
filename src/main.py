@@ -55,8 +55,9 @@ targetPlaylist_ID = linkID(sys.argv[2])
 weeklyPlaylist_ID = linkID(sys.argv[3])
 
 # get the tracks id into a list
-track_ids = get_track_ids[targetPlaylist_ID]
+track_ids = get_track_ids(targetPlaylist_ID)
 
 
 # Add the list of tracks to the target playlist
+
 result = sp.playlist_add_items(weeklyPlaylist_ID, track_ids)
