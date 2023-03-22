@@ -2,7 +2,7 @@
 An spotify automation to automatically save the Weekly Discovery Playlist.
 
 ## How to use it (WIP)
-You must edit the config_toke.py file with your client id and secret
+You must run token_create.py file and insert your client id and secret
  - you can get those in the <a href="https://developer.spotify.com" target="_blank">Spotify developer website</a>
 
 The Python file uses 3 arguments,

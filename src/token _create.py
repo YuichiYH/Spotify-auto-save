@@ -6,6 +6,7 @@ if not os.path.isdir('json'):
 
 client_id = input("Insert your client ID tonken\n")
 client_secret = input("Insert your client secret tonken\n")
+
 x = {
     'client_id': client_id,
     'client_secret':client_secret
